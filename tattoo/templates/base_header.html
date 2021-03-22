@@ -1,0 +1,57 @@
+{% load static %}
+
+<header id="master-header" class="full-screen overlayed">
+<div class="bg-overlay"></div>
+<div id="media-container">
+    <img src="{% static 'img/post-image.jpg' %}" width="1500">
+</div>
+<div class="top-header">
+        <div class="container">
+            <!-- ============ Верхнее меню - НАЧАЛО ============ -->
+            <a id="nav-toggle" href="#"><span></span></a>
+            <nav id="nav-menu">
+                <ul>
+                    <li>
+                        <a title="Главная" href="{% url 'home' %}">Главная</a>
+                    </li>
+                    <li>
+                        <a title="About Us 1 Page" href="{% url 'about' %}">О нас</a>
+                    </li>
+                    <li>
+                        <a title="Portfolio" href="{% url 'blog' %}">Блог</a>
+                    </li>
+                    <li>
+                        <a title="Journal" href="{% url 'all_master' %}">Мастера</a>
+                    </li>
+                    <li>
+                        <a title="Contacts Page" href="{% url 'contact' %}">Контакты</a>
+                    </li>
+                    <li><a title="Contacts Page" ></a></li>
+
+                    {% if not request.user.is_authenticated %}
+                        <li>
+                            <a title="Contacts Page" href="{% url 'login' %}">Авторизация</a>
+                        </li>
+
+                        <li>
+                            <a title="Contacts Page" href="{% url 'registration' %}">Регистрация</a>
+                        </li>
+                    {% else %}
+                        {% if request.user.is_authenticated %}
+                            Здравствуйте
+                            {{ request.user.username }}
+                        {% else %} Гость! {% endif %}
+                    <li><a href="{% url 'logout' %}">| Выйти</a></li>
+
+
+                    {% endif %}
+                </ul>
+
+            </nav>
+
+        <!-- ============ Верхнее меню - КОНЕЦ ============ -->
+    </div>
+</div>
+
+<h2 id="page-title"><span>{% block page_title %}{% endblock %}</span></h2>
+</header>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block header %}
+{% include 'inc/_header_master.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="content container">
+        <div class="full row">
+            <div class="col-md-6">
+                <p><strong>Привет меня зовут {{ master.name }}</strong><br>{{ master.about_master }}</p>
+                <h4>Ищи меня тут</h4>
+                <ul class="social-links">
+                    <li><a href="{{ master.vk_link }}"><i class="fa fa-vk"></i></a></li>
+                    <li><a href="{{ master.inst_link }}"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+                <h3 class="focus-title">How to work</h3>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                     Itaque iure facere ipsa laboriosam exercitationem nam dolor
+                     e reprehenderit recusandae molestiae, fugit.
+                 </p>
+                <ul class="icon-list">
+                    <li><i class="fa fa-star"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+                    <li><i class="fa fa-star"></i>Lorem ipsum dobghhnlor sit amet, consectetur adipisicing elit</li>
+                    <li><i class="fa fa-star"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+                </ul>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Itaque iure facere ipsa laboriosam exercitationem nam dolore reprehenderit
+                    recusandae molestiae, fugit. Nostrum eius itaque adipisci eveniet ipsum
+                    explicabo eaque nulla, totam accusantium expedita aperiam molestiae maxime,
+                    nesciunt? In eos, incidunt cupiditate. Itaque iure facere ipsa laboriosam
+                    exercitationem nam dolore reprehenderit recusandae molestiae, fugit. Nostrum
+                    eius itaque adipisci eveniet ipsum explicabo eaque nulla, totam accusa
+                    ntium expedita aperiam molestiae maxime, nesciunt? In eos, incidunt cupiditate.
+                </p>
+            </div>
+             <div class="col-md-6">
+                <img src="{{ master.image.url }}" alt="Patrick Tattoomaker">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ Artist Description - END ============ -->
+
+<!-- ============ Artist Works - START ============ -->
+
+<section id="latest-works" class="section">
+    <div class="section-title bg-glyph diamond center">
+        <h2>Последнии работы</h2>
+    </div>
+    <div class="content container">
+        <div class="works">
+            {% for item in last_works %}
+            <div class="work col-md-2 col-sm-6">
+                <div class="work-thumb">
+                    <img src="{{ item.image.url }}" alt="Work 01">
+                    <div class="thumb-links">
+                        <a class="zoom" href="{{ item.image.url }}"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sidebar %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/main.css' %}">{% endblock %}
+
+{% block header %}
+    {% include 'inc/_header_blog_post.html' %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="primary col-md-8">
+                <div class="post-content">
+
+                    <img class="thumb" src="{{ post.image.url }}" width="300">
+                    {{ post.content|safe }}
+                </div>
+
+                <ul class="tags">
+                    {% for tag in tags %}
+                    <li><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!--===============Sidebar===============-->
+            {% include 'inc/sidebar.html' %}
+            <!--===============Sidebar===============-->
+        </div>
+    </div>
+</div>
+{% endblock %}

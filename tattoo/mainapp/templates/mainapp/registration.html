@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+    {% include 'inc/_header_reg.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="row" style="margin-bottom: 50px; margin-top: 50px">
+<div class="col-md-6 offset-md-3">
+    <form action="" method="POST" class="contact-form row">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p style="font-size:14px; color: black;margin-top: 10px">* - означает обязательные поля</p>
+        <hr>
+        <button type="submit" style="width" class="btn btn-outline-dark">Зарегистрироваться</button>
+    </form>
+</div>
+
+</div>
+{% endblock %}

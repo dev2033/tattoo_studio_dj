@@ -1,0 +1,9 @@
+
+<section class="widget">
+    <h3 class="focus-title"><i class="fa fa-file-text-o"></i>Популярные посты</h3>
+    {% for post in posts %}
+    <ul>
+        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    </ul>
+    {% endfor %}
+</section>

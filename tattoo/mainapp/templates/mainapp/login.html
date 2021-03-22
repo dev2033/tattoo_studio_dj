@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+    {% include 'inc/_header_login.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="content container">
+<div class="row" style="margin-bottom: 200px; margin-top: 160px">
+<div class="col-md-6 offset-md-3">
+    <form action="" method="POST" class="contact-form row">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <hr>
+        <button type="submit" class="btn btn-outline-dark block">Войти</button>
+    </form>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
