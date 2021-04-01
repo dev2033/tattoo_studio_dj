@@ -26,7 +26,7 @@
                     <li>
                         <a title="Contacts Page" href="{% url 'contact' %}">Контакты</a>
                     </li>
-                    <li><a title="Contacts Page" ></a></li>
+                    <li><a title="Contacts Page" href="{% url 'works' %}" >Работы мастеров</a></li>
 
                     {% if not request.user.is_authenticated %}
                         <li>

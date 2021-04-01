@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Все работы {% endblock %}
+
+{% block header %}
+
+{% include 'inc/header_all_works.html' %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="section">
+    <div class="content container">
+        <div class="row">
+            {% for work in works %}
+            <div class="work col-sm-4">
+                <div class="work-thumb">
+                    <img src="{{ work.image.url }}" alt="Work 01">
+                    <div class="thumb-links">
+                        <a class="zoom" href="{{ work.image.url }}"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+         </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

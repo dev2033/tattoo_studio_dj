@@ -1669,7 +1669,7 @@ ul.social-links a i {
 
 form label,
 form .label {
-    display: block;
+    display: none;
     margin-bottom: 20px;
 }
 
@@ -1909,112 +1909,6 @@ input[type=radio]:checked + .radio-replacer {
     20.5 - Form Message
 --------------------------------------------------------------*/
 
-.form-msg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-    background-color: rgba(0,0,0,0.95);
-    z-index: 1100;
-}
-
-.form-msg span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 40px 80px;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-}
-
-.form-msg.fail span {
-    background-color: #CF000F;
-}
-
-.form-msg.duplicate span {
-    background-color: #e67e22;
-}
-
-.form-msg.success span {
-    background-color: #27ae60;
-}
-
-.form-msg span:before {
-    position: absolute;
-    top: -60px;
-    left: 0;
-    width: 100%;
-    line-height: 40px;
-    font-size: 40px;
-    text-align: center;
-    content: '\0021';   /* exclamation point */
-}
-
-.form-msg.fail span:before {
-    color: #CF000F;
-}
-
-.form-msg.duplicate span:before {
-    color: #e67e22;
-}
-
-.form-msg.success span:before {
-    color: #27ae60;
-    font-family: 'FontAwesome';
-    content: '\f00c';
-}
-
-.form-msg a {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 30px;
-    height: 30px;
-}
-
-.form-msg a:before,
-.form-msg a:after {
-    position: absolute;
-    top: 0;
-    width: 42px;
-    height: 1px;
-    background-color: #ffffff;
-    content: '';
-    -webkit-transform-origin: 0 0;
-    -moz-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    -o-transform-origin: 0 0;
-    transform-origin: 0 0;
-}
-
-.form-msg a:before {
-    left: 0px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-
-}
-
-.form-msg a:after {
-    left: 30px;
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-    transform: rotate(135deg);
-}
 
 /*--------------------------------------------------------------
     20.6 - Form Loader

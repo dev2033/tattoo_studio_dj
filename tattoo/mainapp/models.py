@@ -146,6 +146,7 @@ class WorkMaster(models.Model):
         help_text='Не обязательно, не где не задействуется! '
                   'Пример: Имя Фамилия мастера'
     )
+    slug = models.SlugField('Url', max_length=50, unique=False)
     master_name = models.ForeignKey(
         Master,
         on_delete=models.CASCADE,
@@ -160,6 +161,9 @@ class WorkMaster(models.Model):
 
     def __str__(self):
         return str(self.pk) + " " + str(self.name)
+
+    # def get_absolute_url(self):
+    #     return reverse('works', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Работа мастера'

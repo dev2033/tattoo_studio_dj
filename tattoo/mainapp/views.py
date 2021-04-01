@@ -7,8 +7,8 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import RegistrationForm, LoginForm
-from .models import Post, Master, TattooCategory, Tag, AboutStudio, Client
-from .logger import logger
+from .models import Post, Master, TattooCategory, Tag, AboutStudio, Client, \
+    WorkMaster
 
 
 class Home(ListView):
@@ -122,9 +122,17 @@ class GetMaster(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Тату-студия Якорь :: Портфолио'
         master = context['master']
+        context['all_works_master'] = master.work_master.all()
         # показывает 10 последних работ мастера
         context['last_works'] = master.work_master.order_by('-id')[:10]
         return context
+
+
+class WorksListView(ListView):
+    """Все работы всех мастеров"""
+    model = WorkMaster
+    template_name = 'mainapp/all_works.html'
+    context_object_name = 'works'
 
 
 class LoginView(View):

@@ -25,6 +25,10 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+class WorkMasterAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
 class StudioAdmin(admin.ModelAdmin):
     form = PostAdminForm
 
@@ -77,7 +81,7 @@ class MasterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Master, MasterAdmin)
-admin.site.register(WorkMaster)
+admin.site.register(WorkMaster, WorkMasterAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(TattooCategory)
 admin.site.register(Post, PostAdmin)
