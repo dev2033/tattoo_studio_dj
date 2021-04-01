@@ -122,10 +122,27 @@ class GetMaster(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Тату-студия Якорь :: Портфолио'
         master = context['master']
-        context['all_works_master'] = master.work_master.all()
         # показывает 10 последних работ мастера
         context['last_works'] = master.work_master.order_by('-id')[:10]
         return context
+
+
+class WorksMaster(ListView):
+    """Показывает все работы каждого мастера"""
+    model = WorkMaster
+    template_name = 'mainapp/works_master.html'
+    context_object_name = 'works'
+
+    def get_queryset(self):
+        master_id = self.kwargs.get("pk")
+        work = Master.objects.get(id=master_id).work_master.all()
+        return work
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     # master = Master.objects.get(id=1).work_master.all()
+    #     context['works'] = get
+    #     return context
 
 
 class WorksListView(ListView):

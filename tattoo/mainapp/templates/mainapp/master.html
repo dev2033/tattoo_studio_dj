@@ -23,7 +23,7 @@
                 <img src="{{ master.image.url }}" alt="Patrick Tattoomaker">
 
             </div>
-            <a href="{{ master.get_absolute_url }}" class="btn btn-outline-dark block">
+            <a href="{% url 'works_master' master.id %}" class="btn btn-outline-dark block">
                 Посмотреть все работы
             </a>
         </div>
@@ -39,7 +39,7 @@
             {% for item in last_works %}
             <div class="work col-md-2 col-sm-6">
                 <div class="work-thumb">
-                    <img src="{{ item.image.url }}" alt="Work 01">
+                    <img src="{{ item.image.url }}">
                     <div class="thumb-links">
                         <a class="zoom" href="{{ item.image.url }}"></a>
                     </div>

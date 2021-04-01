@@ -20,8 +20,9 @@
               <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                          <p class="card-text">{{ item.positions }}</p>
-                    <a href="{{ item.get_absolute_url }}" class="btn btn-outline-dark">Перейти</a>
+
               </div>
+                <a href="{{ item.get_absolute_url }}" class="btn btn-outline-dark block">Перейти</a>
             </div>
             {% endfor %}
          </div>

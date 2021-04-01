@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Работы всех мастеров {% endblock %}
+{% block title %}
+    Работы мастера
+{% endblock %}
 
 {% block header %}
 
-{% include 'inc/header_all_works.html' %}
+{% include 'inc/works_master_header.html' %}
 
 {% endblock %}
 
@@ -24,6 +26,7 @@
                 </div>
             </div>
             {% endfor %}
+
          </div>
     </div>
 </div>
