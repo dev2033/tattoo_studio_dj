@@ -5,18 +5,35 @@
 ```comandline
 git clone https://github.com/dev2033/tattoo_studio_dj.git
 ```
-2. Перейти в папку с файлом `manage.py` и выполнить миграции, командой:
+2. Установить зависимости:
+```commandline
+pip install -r requirements.txt
+```
+3. Перейти в папку с файлом `manage.py` и выполнить миграции, командой:
 ```commandline
 python manage.py makemigrations
 python manage.py migrate
 ```
-3. Собрать все статические файлы, командой:
+4. Собрать все статические файлы, командой:
 ```commandline
 python manage.py collectstatic
 ```
-4. Создать суперпользователя, командой:
+5. Создать суперпользователя, командой:
 ```commandline
 python manage.py createsuperuser
+```
+6. Запускаем docker container для redis, командой:
+```commandline
+sudo docker run -d -p 6379:6379 redis
+sudo docker pull redis
+```
+7. Запустить celery worker, командой:
+```commandline
+celery -A tattoo -l info
+```
+8. Запустить celery beat, командой:
+```commandline
+celery -A tattoo beat -l info
 ```
 
 Стек:
@@ -31,3 +48,4 @@ python manage.py createsuperuser
 3. https://docs.celeryproject.org/en/latest/reference/celery.beat.html
 4. https://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html#crontab-schedules
 5. https://www.youtube.com/watch?v=9RTZP16rvkQ
+6. https://redislabs.com/get-started-with-redis/#Option-C
