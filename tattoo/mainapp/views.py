@@ -7,60 +7,39 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import RegistrationForm, LoginForm
-from .models import Post, Master, TattooCategory, Tag, AboutStudio, Client, \
-    WorkMaster
+from .models import (
+    Post, Master, TattooCategory,
+    Tag, AboutStudio, Client, WorkMaster
+)
 
 
 class Home(ListView):
-    """
-    Вывод главной страницы
-    """
+    """Вывод главной страницы"""
     model = TattooCategory
     context_object_name = 'categories'
     template_name = 'mainapp/index.html'
     allow_empty = True
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Тату-студия Якорь'
-        return context
-
 
 class GetPosts(ListView):
-    """
-    Вывод всех постов
-    """
+    """Вывод всех постов"""
     model = Post
     context_object_name = 'posts'
     template_name = 'mainapp/blog.html'
     paginate_by = 4
     allow_empty = True
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Тату-студия Якорь :: Блог'
-        return context
-
 
 class GetAbout(ListView):
-    """
-    Выводит страницу 'О нас'
-    """
+    """Выводит страницу 'О нас'"""
     model = AboutStudio
     template_name = 'mainapp/about.html'
     context_object_name = 'about'
     allow_empty = True
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Тату-студия Якорь :: О нас'
-        return context
-
 
 class GetPost(DetailView):
-    """
-    Показывает каждый пост отдельно
-    """
+    """Показывает каждый пост отдельно"""
     model = Post
     template_name = 'mainapp/blog_post.html'
     context_object_name = 'post'
@@ -68,17 +47,14 @@ class GetPost(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        # выражение, которое увеличивает кол-во просмотров
         self.object.views = F('views') + 1
-        self.object.save()  # сохраняем объект
-        self.object.refresh_from_db()   # перезапрашивает данный из бд
+        self.object.save()
+        self.object.refresh_from_db()
         return context
 
 
 class PostsByTag(ListView):
-    """
-    Выводит записи по тегу
-    """
+    """Выводит записи по тегу"""
     template_name = 'mainapp/blog.html'
     context_object_name = 'posts'
     paginate_by = 4
@@ -95,24 +71,15 @@ class PostsByTag(ListView):
 
 
 class AllMasters(ListView):
-    """
-    Вывод всех мастеров
-    """
+    """Вывод всех мастеров"""
     model = Master
     context_object_name = 'masters'
     template_name = 'mainapp/all_masters.html'
     allow_empty = True
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Тату-студия Якорь :: Мастера'
-        return context
-
 
 class GetMaster(DetailView):
-    """
-    Показывает каждого мастера отдельно
-    """
+    """Показывает каждого мастера отдельно"""
     model = Master
     template_name = 'mainapp/master.html'
     context_object_name = 'master'
@@ -138,12 +105,6 @@ class WorksMaster(ListView):
         work = Master.objects.get(id=master_id).work_master.all()
         return work
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     # master = Master.objects.get(id=1).work_master.all()
-    #     context['works'] = get
-    #     return context
-
 
 class WorksListView(ListView):
     """Все работы всех мастеров"""
@@ -153,9 +114,7 @@ class WorksListView(ListView):
 
 
 class LoginView(View):
-    """
-    Авторизация
-    """
+    """Авторизация"""
     def get(self, request, *args, **kwargs):
         form = LoginForm(request.POST or None)
         context = {
@@ -181,9 +140,7 @@ class LoginView(View):
 
 
 class RegistrationView(View):
-    """
-    Регистрация
-    """
+    """Регистрация"""
     def get(self, request, *args, **kwargs):
         form = RegistrationForm(request.POST or None)
         context = {

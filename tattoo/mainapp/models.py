@@ -10,6 +10,7 @@ class Client(models.Model):
     """Пользователь"""
     user = models.ForeignKey(User, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
+    email = models.CharField('Email', max_length=200)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона',
                              null=True, blank=True)
     address = models.CharField(max_length=255, verbose_name='Адрес',
