@@ -2,39 +2,48 @@
 
 <h3>Запуск проекта:</h3>
 1. Скопировать проект, командой:
-```
-git clone https://github.com/dev2033/tattoo_studio_dj.git
-```
+   
+    `git clone https://github.com/dev2033/tattoo_studio_dj.git`
+   
+
 2. Установить зависимости:
-```
-pip install -r requirements.txt
-```
+   
+    `pip install -r requirements.txt`
+   
+
 3. Перейти в папку с файлом `manage.py` и выполнить миграции, командой:
-```
-python manage.py makemigrations
-python manage.py migrate
-```
+   
+    `python manage.py makemigrations`
+   
+    `python manage.py migrate`
+   
+
 4. Собрать все статические файлы, командой:
-```
-python manage.py collectstatic
-```
+
+    `python manage.py collectstatic`
+   
+
 5. Создать суперпользователя, командой:
-```
-python manage.py createsuperuser
-```
+
+    `python manage.py createsuperuser`
+   
+
 6. Запускаем docker container для redis, командой:
-```
-sudo docker run -d -p 6379:6379 redis
-sudo docker pull redis
-```
+   
+    `sudo docker run -d -p 6379:6379 redis`
+   
+    `sudo docker pull redis`
+   
+
 7. Запустить celery worker, командой:
-```
-celery -A tattoo -l info
-```
+   
+    `celery -A tattoo -l info`
+   
+
 8. Запустить celery beat, командой:
-```
-celery -A tattoo beat -l info
-```
+   
+    `celery -A tattoo beat -l info`
+
 
 Стек:
 - Python
