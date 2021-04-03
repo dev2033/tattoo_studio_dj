@@ -44,12 +44,15 @@
    
     $ `celery -A tattoo beat -l info`
 
+<hr>
 
 Стек:
 - Python
 - HTML/CSS/JS 
 - Django
 - Celery
+
+<hr>
 
 Полезные ссылки:
 1. https://khashtamov.com/ru/celery-best-practices/
@@ -58,3 +61,11 @@
 4. https://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html#crontab-schedules
 5. https://www.youtube.com/watch?v=9RTZP16rvkQ
 6. https://redislabs.com/get-started-with-redis/#Option-C
+
+<hr>
+<h3 style="color:#9370DB">Контакты:</h3>
+<div class="row">
+<a href="https://vk.com/hellopeople0"><img width="80" style="margin-left:5px; margin-right:5px" src="https://www.sharethis.com/wp-content/uploads/2017/05/Vkontakte.png" alt=""></a>
+<a href="https://t.me/developerPy3"><img width="80" style="margin-left:5px; margin-right:5px" src="https://web.telegram.org/img/logo_share.png" alt=""></a>
+<a href="https://github.com/dev2033"><img width="85" style="margin-left:5px; margin-right:5px" src="https://techcrunch.com/wp-content/uploads/2010/07/github-logo.png" alt=""></a>
+</div>
