@@ -3,14 +3,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
+from mainapp.utils import e_handler404, e_handler500, e_handler403, e_handler400
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('mainapp.urls')),
     path('contact/', include('email_send.urls'), name='contact'),
-    # path('customer-record/', include('email_send.urls')),
 ]
+
+handler404 = e_handler404
+handler500 = e_handler500
+handler403 = e_handler403
+handler400 = e_handler400
 
 if settings.DEBUG:
     # urlpatterns = [

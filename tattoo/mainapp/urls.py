@@ -4,6 +4,7 @@ from django.contrib.auth.views import LogoutView
 from .views import *
 
 
+
 urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('all-master/', AllMasters.as_view(), name='all_master'),
@@ -17,4 +18,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page="/"), name='logout'),
     path('works/', WorksListView.as_view(), name='works'),
     path('master/<int:pk>/works/', WorksMaster.as_view(), name='works_master'),
+    # path('page-not-found', e_handler404, name='page_not_found'),
+    # path('internal-server-error', e_handler500, name='internal_server_error'),
 ]
+
+
