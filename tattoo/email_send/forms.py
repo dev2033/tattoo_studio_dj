@@ -27,6 +27,15 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ('name', 'email')
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+
+        if Contact.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                f'Данный почтовый адрес, уже подписан на рассылку!'
+            )
+        return email
+
 
 class ClientForm(forms.ModelForm):
     """Форма записи на консультацию пользователя"""
@@ -60,3 +69,12 @@ class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = ('name', 'email', 'phone', 'messages')
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+
+        if Client.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                f'Данный почтовый адрес, занят!'
+            )
+        return email

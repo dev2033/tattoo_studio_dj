@@ -37,7 +37,7 @@
 
 7. Запустить celery worker, командой:
    
-    $ `celery -A tattoo -l info`
+    $ `celery -A tattoo worker -l info`
    
 
 8. Запустить celery beat, командой:

@@ -14,7 +14,6 @@
     <form action="" method="POST" class="contact-form row">
         {% csrf_token %}
         {{ form|crispy }}
-        <p style="font-size:14px; color: black;margin-top: 10px">* - означает обязательные поля</p>
         <hr>
         <button type="submit" style="width" class="btn btn-outline-dark">Записаться</button>
     </form>
