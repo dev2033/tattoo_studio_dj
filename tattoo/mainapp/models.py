@@ -6,24 +6,6 @@ from django.urls import reverse
 User = get_user_model()
 
 
-class Client(models.Model):
-    """Пользователь"""
-    user = models.ForeignKey(User, verbose_name='Пользователь',
-                             on_delete=models.CASCADE)
-    email = models.CharField('Email', max_length=200)
-    phone = models.CharField(max_length=20, verbose_name='Номер телефона',
-                             null=True, blank=True)
-    address = models.CharField(max_length=255, verbose_name='Адрес',
-                               null=True, blank=True)
-
-    def __str__(self):
-        return str(self.user)
-
-    class Meta:
-        verbose_name = "Клиент"
-        verbose_name_plural = "Клиенты"
-
-
 class Master(models.Model):
     """Мастер"""
     name = models.CharField("Имя мастера", max_length=100)
