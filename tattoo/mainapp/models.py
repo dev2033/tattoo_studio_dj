@@ -182,4 +182,3 @@ class AboutStudio(models.Model):
     class Meta:
         verbose_name = 'О студии'
         verbose_name_plural = 'О студии'
-
