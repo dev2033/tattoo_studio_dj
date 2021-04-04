@@ -12,8 +12,8 @@ app.autodiscover_tasks()
 
 # запуск по времени
 app.conf.beat_schedule = {
-    'send-spam-every-1-minute': {
+    'send-spam-every-sunday': {
         'task': 'email_send.tasks.send_beat_email',
-        'schedule': crontab(minute='*/1')   # задаем переодичность
+        'schedule': crontab(hour=12, minute=15, day_of_week=1)
     }
 }

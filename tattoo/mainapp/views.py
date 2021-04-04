@@ -6,10 +6,11 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView
 
+from email_send.models import Client
 from .forms import RegistrationForm, LoginForm
 from .models import (
     Post, Master, TattooCategory,
-    Tag, AboutStudio, Client, WorkMaster
+    Tag, AboutStudio, WorkMaster
 )
 
 

@@ -9,10 +9,6 @@ from django.utils.safestring import mark_safe
 from .models import *
 
 
-class ClientAdmin(admin.ModelAdmin):
-    list_display = ('user', 'phone', 'address')
-
-
 class PostAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget())
 
@@ -82,7 +78,6 @@ class MasterAdmin(admin.ModelAdmin):
 
 admin.site.register(Master, MasterAdmin)
 admin.site.register(WorkMaster, WorkMasterAdmin)
-admin.site.register(Client, ClientAdmin)
 admin.site.register(TattooCategory)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag, TagAdmin)

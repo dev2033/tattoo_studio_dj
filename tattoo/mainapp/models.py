@@ -1,9 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-
-
-User = get_user_model()
 
 
 class Master(models.Model):
@@ -144,9 +140,6 @@ class WorkMaster(models.Model):
 
     def __str__(self):
         return str(self.pk) + " " + str(self.name)
-
-    # def get_absolute_url(self):
-    #     return reverse('works', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Работа мастера'

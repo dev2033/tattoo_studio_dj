@@ -7,7 +7,7 @@ from django.conf import settings
 
 
 @app.task
-def send_spam_email(user_email):
+def mailing_by_email(user_email):
     send(user_email)
 
 
@@ -16,9 +16,9 @@ def send_beat_email():
     for contact in Contact.objects.all():
         send_mail(
             # Тема письма
-            'Вы подписались на рассылку',
+            'Вы подписались на рассылку нашей студии',
             # Контент письма
-            'Мы будем присылать вам много СПАМА каждую 1 минуту',
+            'Мы будем присылать вам много СПАМА каждое воскресенье',
             settings.EMAIL_HOST_USER,
             [contact.email],
             fail_silently=False,

@@ -8,7 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('mainapp.urls')),
-    path('contact/', include('email_send.urls')),
+    path('contact/', include('email_send.urls'), name='contact'),
+    # path('customer-record/', include('email_send.urls')),
 ]
 
 if settings.DEBUG:

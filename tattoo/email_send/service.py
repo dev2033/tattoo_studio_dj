@@ -5,8 +5,8 @@ from django.conf import settings
 
 def send(user_email):
     send_mail(
-        'Вы подписались на рассылку',
-        'Мы будем присылать вам много СПАМА!',
+        'Спасибо за обращение!',
+        'В ближайшее время мастер с вами свяжется',
         settings.EMAIL_HOST_USER,
         [user_email],
         fail_silently=False,

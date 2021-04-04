@@ -1,4 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+
+User = get_user_model()
 
 
 class Contact(models.Model):
@@ -17,12 +21,11 @@ class Contact(models.Model):
 class Client(models.Model):
     """Клиент студии"""
     user = models.ForeignKey(User, verbose_name='Пользователь',
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, null=True, blank=True)
     email = models.CharField('Email', max_length=200)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона',
                              null=True, blank=True)
-    address = models.CharField(max_length=255, verbose_name='Адрес',
-                               null=True, blank=True)
+    messages = models.TextField('Текст сообщения')
 
     def __str__(self):
         return str(self.user)
