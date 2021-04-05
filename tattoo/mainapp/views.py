@@ -1,5 +1,4 @@
 from django.contrib.auth import authenticate, login
-from django.views.defaults import page_not_found
 from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render

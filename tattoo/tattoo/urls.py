@@ -2,9 +2,13 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from django.views.defaults import page_not_found
 
 from mainapp.utils import e_handler404, e_handler500, e_handler403, e_handler400
+from .view_admin import admin_view
 
+
+admin.site.admin_view = admin_view
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -12,6 +16,7 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     path('contact/', include('email_send.urls'), name='contact'),
 ]
+
 
 handler404 = e_handler404
 handler500 = e_handler500
