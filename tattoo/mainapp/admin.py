@@ -18,14 +18,19 @@ class PostAdminForm(forms.ModelForm):
 
 
 class TagAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
 
 
 class WorkMasterAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display_links = ('name', 'id', 'master_name')
+    list_display = ('id', 'name', 'master_name')
     prepopulated_fields = {'slug': ('name',)}
 
 
 class StudioAdmin(admin.ModelAdmin):
+    save_on_top = True
     form = PostAdminForm
 
 
@@ -69,7 +74,19 @@ class MasterAdminForm(ModelForm):
 
 
 class MasterAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('name', 'positions', 'get_image')
+    list_display_links = ('name', 'get_image')
     form = MasterAdminForm
+
+    def get_image(self, obj):
+        """Возвращает фото мастера"""
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="75"')
+        else:
+            return '-'
+
+    get_image.short_description = 'Фото'
 
     class Meta:
         model = Master
@@ -84,5 +101,5 @@ admin.site.register(Tag, TagAdmin)
 admin.site.register(AboutStudio, StudioAdmin)
 
 
-admin.site.site_title = 'Управление сайтом'
-admin.site.site_header = 'Управление сайтом'
+admin.site.site_title = 'Административная панель сайта Тату-студии "Якорь"'
+admin.site.site_header = 'Административная панель сайта Тату-студии "Якорь"'

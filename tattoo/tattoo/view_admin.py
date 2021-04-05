@@ -1,9 +1,8 @@
 from functools import update_wrapper
 
+from django.shortcuts import redirect
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
-
-from mainapp.utils import e_handler403
 
 
 def admin_view(view, cacheable=False):
@@ -12,7 +11,7 @@ def admin_view(view, cacheable=False):
     """
     def inner(request, *args, **kwargs):
         if not request.user.is_superuser and not request.user.is_staff:
-            return e_handler403(request, '403 Forbidden')
+            return redirect('/')
         return view(request, *args, **kwargs)
 
     if not cacheable:

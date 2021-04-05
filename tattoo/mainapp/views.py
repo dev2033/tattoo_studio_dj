@@ -13,12 +13,11 @@ from .models import (
 )
 
 
-class Home(ListView):
+class Home(View):
     """Вывод главной страницы"""
-    model = TattooCategory
-    context_object_name = 'categories'
-    template_name = 'mainapp/index.html'
-    allow_empty = True
+    def get(self, request):
+        categories = TattooCategory.objects.all()
+        return render(request, 'mainapp/index.html', {'categories': categories})
 
 
 class GetPosts(ListView):
@@ -30,12 +29,11 @@ class GetPosts(ListView):
     allow_empty = True
 
 
-class GetAbout(ListView):
+class GetAbout(View):
     """Выводит страницу 'О нас'"""
-    model = AboutStudio
-    template_name = 'mainapp/about.html'
-    context_object_name = 'about'
-    allow_empty = True
+    def get(self, request, *args, **kwargs):
+        about = AboutStudio.objects.all()
+        return render(request, 'mainapp/about.html', {'about': about})
 
 
 class GetPost(DetailView):
@@ -99,6 +97,7 @@ class WorksMaster(ListView):
     model = WorkMaster
     template_name = 'mainapp/works_master.html'
     context_object_name = 'works'
+    paginate_by = 5
 
     def get_queryset(self):
         master_id = self.kwargs.get("pk")
@@ -111,6 +110,7 @@ class WorksListView(ListView):
     model = WorkMaster
     template_name = 'mainapp/all_works.html'
     context_object_name = 'works'
+    paginate_by = 15
 
 
 class LoginView(View):

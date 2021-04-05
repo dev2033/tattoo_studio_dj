@@ -125,7 +125,7 @@ class WorkMaster(models.Model):
         help_text='Не обязательно, не где не задействуется! '
                   'Пример: Имя Фамилия мастера'
     )
-    slug = models.SlugField('Url', max_length=50, unique=False)
+    slug = models.SlugField('Url', max_length=50, unique=True)
     master_name = models.ForeignKey(
         Master,
         on_delete=models.CASCADE,
@@ -139,7 +139,7 @@ class WorkMaster(models.Model):
     image = models.ImageField(verbose_name='Изображение')
 
     def __str__(self):
-        return str(self.pk) + " " + str(self.name)
+        return str(self.name)
 
     class Meta:
         verbose_name = 'Работа мастера'
