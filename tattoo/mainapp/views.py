@@ -26,7 +26,6 @@ class GetPosts(ListView):
     context_object_name = 'posts'
     template_name = 'mainapp/blog.html'
     paginate_by = 4
-    allow_empty = True
 
 
 class GetAbout(View):
@@ -41,7 +40,6 @@ class GetPost(DetailView):
     model = Post
     template_name = 'mainapp/blog_post.html'
     context_object_name = 'post'
-    allow_empty = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,7 +54,6 @@ class PostsByTag(ListView):
     template_name = 'mainapp/blog.html'
     context_object_name = 'posts'
     paginate_by = 4
-    allow_empty = True
 
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs['slug'])
@@ -73,7 +70,6 @@ class AllMasters(ListView):
     model = Master
     context_object_name = 'masters'
     template_name = 'mainapp/all_masters.html'
-    allow_empty = True
 
 
 class GetMaster(DetailView):
@@ -81,7 +77,6 @@ class GetMaster(DetailView):
     model = Master
     template_name = 'mainapp/master.html'
     context_object_name = 'master'
-    allow_empty = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
