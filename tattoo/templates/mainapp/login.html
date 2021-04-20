@@ -4,7 +4,10 @@
 {% block title %}{% endblock %}
 
 {% block header %}
-    {% include 'inc/_header_login.html' %}
+    <header id="master-header" class="full-screen overlayed">
+        {% include 'inc/base_header.html' %}
+        <h2 id="page-title"><span>Авторизация</span></h2>
+    </header>
 {% endblock %}
 
 

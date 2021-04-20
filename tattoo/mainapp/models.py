@@ -8,16 +8,10 @@ class Master(models.Model):
     positions = models.CharField(
         "Должность",
         max_length=70,
-        null=True,
-        blank=True,
+        help_text='например: тату-мастер'
     )
     image = models.ImageField(verbose_name='Изображение')
-    about_master = models.TextField(
-        "О мастере",
-        null=True,
-        blank=True,
-        help_text='Не обязательно!'
-    )
+    about_master = models.TextField('О мастере')
     vk_link = models.CharField(
         'Ссылка на Вконтакте',
         max_length=250,
@@ -26,6 +20,12 @@ class Master(models.Model):
     )
     inst_link = models.CharField(
         'Ссылка на Инстаграм',
+        max_length=250,
+        blank=True,
+        null=True
+    )
+    telegram_link = models.CharField(
+        'Ссылка на Телеграм',
         max_length=250,
         blank=True,
         null=True
@@ -60,7 +60,7 @@ class Post(models.Model):
     slug = models.SlugField('Url', max_length=255, unique=True)
     content = models.TextField('Контент', blank=True)
     views = models.IntegerField('Колличество просмотров', default=0)
-    image = models.ImageField("Фото", blank=True, null=True,
+    image = models.ImageField("Изображение", blank=True, null=True,
                               help_text='Не обязательно!')
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -123,7 +123,7 @@ class WorkMaster(models.Model):
         blank=True,
         null=True,
         help_text='Не обязательно, не где не задействуется! '
-                  'Пример: Имя Фамилия мастера'
+                  'Пример: '
     )
     slug = models.SlugField('Url', max_length=50, unique=True)
     master_name = models.ForeignKey(
@@ -131,10 +131,6 @@ class WorkMaster(models.Model):
         on_delete=models.CASCADE,
         related_name='work_master',
         verbose_name='Мастер'
-    )
-    tag = models.ManyToManyField(
-        Tag,
-        verbose_name='Теги'
     )
     image = models.ImageField(verbose_name='Изображение')
 

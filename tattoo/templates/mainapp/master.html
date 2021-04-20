@@ -4,7 +4,10 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block header %}
-{% include 'inc/_header_master.html' %}
+    <header id="master-header" class="full-screen overlayed">
+        {% include 'inc/base_header.html' %}
+        <h2 id="page-title"><span>{{ master.name }}</span></h2>
+    </header>
 {% endblock %}
 
 {% block content %}

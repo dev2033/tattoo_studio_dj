@@ -1,20 +1,18 @@
 {% load static %}
 
-<header id="master-header" class="full-screen overlayed">
-    <div class="bg-overlay"></div>
-    <div id="media-container">
-        <video id="video-background" preload="auto" loop="loop" muted="muted">
-        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
-
-        </video>
-    </div>
-
-    <div class="top-header">
+<div class="bg-overlay"></div>
+<div id="media-container">
+    <img src="{% static 'img/post-image.jpg' %}" width="1500">
+</div>
+<div class="top-header">
         <div class="container">
             <!-- ============ Верхнее меню - НАЧАЛО ============ -->
             <a id="nav-toggle" href="#"><span></span></a>
             <nav id="nav-menu">
                 <ul>
+                    <li>
+                        <a title="Главная" href="{% url 'home' %}">Главная</a>
+                    </li>
                     <li>
                         <a title="About Us 1 Page" href="{% url 'about' %}">О нас</a>
                     </li>
@@ -41,19 +39,16 @@
                         {% if request.user.is_authenticated %}
                             Здравствуйте
                             {{ request.user.username }}
-                        {% endif %}
+                        {% else %} Гость! {% endif %}
                     <li><a href="{% url 'logout' %}">| Выйти</a></li>
 
 
                     {% endif %}
                 </ul>
+
             </nav>
 
-            <!-- ============ Верхнее меню - КОНЕЦ ============ -->
-        </div>
+        <!-- ============ Верхнее меню - КОНЕЦ ============ -->
     </div>
+</div>
 
-    <div id="brand">
-        <h1 id="logo"><img src="{% static 'img/logo-big.png' %}" alt="Маяк - Тату коллектив"></h1>
-    </div>
-</header>

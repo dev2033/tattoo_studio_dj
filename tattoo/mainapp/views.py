@@ -29,7 +29,7 @@ class GetPosts(ListView):
 
 
 class GetAbout(View):
-    """Выводит страницу 'О нас'"""
+    """Выводит страницу 'О нас' """
     def get(self, request, *args, **kwargs):
         about = AboutStudio.objects.all()
         return render(request, 'mainapp/about.html', {'about': about})

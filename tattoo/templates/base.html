@@ -15,8 +15,11 @@
 
 <div class="wrapper">
     {% block header %}
-    {% include 'inc/_header.html' %}
+    <header id="master-header" class="full-screen overlayed">
+        {% include 'inc/home_header.html' %}
+    </header>
     {% endblock header %}
+
     <main>
         <div id="contacts-bar" class="row">
             <div class="address col-md-6"><strong>Тату-студия Якорь</strong>, Регион Test, Город Test, Улица Test, дом 1</div>
@@ -25,7 +28,9 @@
                 <span class="contact"><i class="fa fa-envelope"></i>Email: <a href="mailto:test@gmail.com"><strong>test@gmail.com</strong></a></span>
             </div>
         </div>
+
         {% block content %}
+
         {% endblock content %}
     </main>
 {% include 'inc/_footer.html' %}
