@@ -60,8 +60,7 @@ class Post(models.Model):
     slug = models.SlugField('Url', max_length=255, unique=True)
     content = models.TextField('Контент', blank=True)
     views = models.IntegerField('Колличество просмотров', default=0)
-    image = models.ImageField("Изображение", blank=True, null=True,
-                              help_text='Не обязательно!')
+    image = models.ImageField("Изображение")
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата публикации'
@@ -85,9 +84,9 @@ class TattooCategory(models.Model):
         'Название категории тату для главной страницы',
         max_length=100
     )
-    content = models.CharField(
+    content = models.TextField(
         'Контент',
-        max_length=250,
+        max_length=500,
         help_text='Краткое описание про вид татуировок'
     )
 

@@ -61,7 +61,7 @@ class ClientForm(forms.ModelForm):
     messages = forms.CharField(
         max_length=1000,
         label='',
-        widget=forms.TextInput(attrs={
+        widget=forms.Textarea(attrs={
             "placeholder": "Текст сообщения..."
         })
     )
