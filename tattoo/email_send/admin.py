@@ -8,7 +8,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('email', 'phone', 'messages')
+    list_display = ('name', 'phone', 'email')
 
 
 admin.site.register(Contact, ContactAdmin)

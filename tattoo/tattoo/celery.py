@@ -14,6 +14,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send-spam-every-sunday': {
         'task': 'email_send.tasks.send_beat_email',
-        'schedule': crontab(day_of_week=6)
+        'schedule': crontab()
     }
 }

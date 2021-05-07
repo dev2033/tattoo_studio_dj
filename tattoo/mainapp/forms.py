@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
+from email_send.models import Client
+
 User = get_user_model()
 
 
@@ -116,7 +118,7 @@ class RegistrationForm(forms.ModelForm):
         #     raise forms.ValidationError(
         #         f'Регистрация для домена {domain} невозможна'
         #     )
-        if User.objects.filter(email=email).exists():
+        if Client.objects.filter(email=email).exists():
             raise forms.ValidationError(
                 f'Данный почтовый адрес уже зарегистрирован в системе'
             )

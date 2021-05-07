@@ -20,15 +20,14 @@ class Contact(models.Model):
 
 class Client(models.Model):
     """Клиент студии"""
-    user = models.ForeignKey(User, verbose_name='Пользователь',
-                             on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField('Имя', max_length=100)
     email = models.CharField('Email', max_length=200)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона',
                              null=True, blank=True)
     messages = models.TextField('Текст сообщения')
 
     def __str__(self):
-        return str(self.user)
+        return str(self.name)
 
     class Meta:
         verbose_name = "Клиент"
