@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
 from email_send.models import Client
+
 
 User = get_user_model()
 
@@ -13,6 +14,21 @@ class CustomPasswordResetForm(PasswordResetForm):
         max_length=254,
         widget=forms.EmailInput(attrs={'autocomplete': 'email',
                                        'placeholder': 'Email'})
+    )
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label='',
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password',
+                                          'placeholder': 'Введите пароль'}),
+        strip=False,
+    )
+    new_password2 = forms.CharField(
+        label='',
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password',
+                                          'placeholder': 'Повторите пароль'}),
     )
 
 
@@ -81,13 +97,6 @@ class RegistrationForm(forms.ModelForm):
                    "placeholder": "Номер телефона"}
         )
     )
-    address = forms.CharField(
-        required=False,
-        widget=forms.TextInput(
-            attrs={"class": "addressInput",
-                   "placeholder": "Адрес"}
-        )
-    )
     first_name = forms.CharField(
         required=True,
         widget=forms.TextInput(
@@ -116,23 +125,22 @@ class RegistrationForm(forms.ModelForm):
         self.fields['password'].label = ''
         self.fields['confirm_password'].label = ''
         self.fields['phone'].label = ''
-        self.fields['address'].label = ''
         self.fields['first_name'].label = ''
         self.fields['last_name'].label = ''
         self.fields['email'].label = ''
 
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-    #     # domain = email.split('.')[-1]
-    #     # if domain in ['com', 'net']:
-    #     #     raise forms.ValidationError(
-    #     #         f'Регистрация для домена {domain} невозможна'
-    #     #     )
-    #     if Client.objects.filter(email=email).exists():
-    #         raise forms.ValidationError(
-    #             f'Данный почтовый адрес уже зарегистрирован в системе'
-    #         )
-    #     return email
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        # domain = email.split('.')[-1]
+        # if domain in ['com', 'net']:
+        #     raise forms.ValidationError(
+        #         f'Регистрация для домена {domain} невозможна'
+        #     )
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                f'Данный почтовый адрес уже зарегистрирован в системе'
+            )
+        return email
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -151,5 +159,5 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'confirm_password', 'first_name',
-                  'last_name', 'phone', 'address', 'email']
+        fields = ['username', 'password', 'confirm_password', 'email',
+                  'first_name', 'last_name', 'phone']

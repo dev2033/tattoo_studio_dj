@@ -9,7 +9,7 @@ venv.bak/
 
 
 db.sqlite3
-
+celerybeat-schedule
 media
 media/
 # Byte-compiled / optimized / DLL files
