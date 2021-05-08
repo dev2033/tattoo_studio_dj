@@ -172,11 +172,13 @@ class RegistrationView(View):
 
 
 class CustomPasswordResetView(PasswordResetView):
+    """Сброс пароля"""
     form_class = CustomPasswordResetForm
     template_name = 'mainapp/password_reset.html'
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    """Сброс пароля|создание нового пароля"""
     form_class = CustomSetPasswordForm
     template_name = 'mainapp/password_reset_confirm.html'
 

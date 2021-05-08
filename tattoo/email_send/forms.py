@@ -58,12 +58,6 @@ class ClientRecordForm(forms.ModelForm):
             "placeholder": "Ваша фамилия*"
         })
     )
-    # email = forms.EmailField(
-    #     label='',
-    #     widget=forms.EmailInput(attrs={
-    #         "placeholder": "Ваш Email*"
-    #     })
-    # )
     phone = forms.CharField(
         label='',
         widget=forms.TextInput(attrs={
@@ -77,16 +71,6 @@ class ClientRecordForm(forms.ModelForm):
             "placeholder": "Текст сообщения*"
         })
     )
-
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-    #
-    #     if Client.objects.filter(email=email).exists():
-    #         raise forms.ValidationError(
-    #             f'Пользователь с таким электронным '
-    #             f'адресом уже записан на сеанс!'
-    #         )
-    #     return email
 
     class Meta:
         model = Record

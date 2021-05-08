@@ -25,7 +25,7 @@ class ContactView(CreateView):
 
 
 class ClientRecordView(View):
-
+    """Запись клиента на сеанс"""
     def get(self, request, *args, **kwargs):
         form = ClientRecordForm(request.POST or None)
         context = {'form': form}

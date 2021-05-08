@@ -9,6 +9,7 @@ User = get_user_model()
 
 
 class CustomPasswordResetForm(PasswordResetForm):
+    """Форма сброса пароля"""
     email = forms.EmailField(
         label='',
         max_length=254,
@@ -18,6 +19,7 @@ class CustomPasswordResetForm(PasswordResetForm):
 
 
 class CustomSetPasswordForm(SetPasswordForm):
+    """Форма создания нового пароля"""
     new_password1 = forms.CharField(
         label='',
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password',
@@ -33,6 +35,7 @@ class CustomSetPasswordForm(SetPasswordForm):
 
 
 class LoginForm(forms.ModelForm):
+    """Форма авторизации"""
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={"class": "usernameInput",
@@ -70,6 +73,7 @@ class LoginForm(forms.ModelForm):
 
 
 class RegistrationForm(forms.ModelForm):
+    """Форма регистрации"""
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={"class": "usernameInput",
