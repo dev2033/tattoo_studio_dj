@@ -20,6 +20,8 @@ class Contact(models.Model):
 
 class Client(models.Model):
     """Клиент студии"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             verbose_name='Пользователь')
     name = models.CharField('Имя', max_length=100)
     email = models.CharField('Email', max_length=200)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона',

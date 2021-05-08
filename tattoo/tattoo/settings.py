@@ -115,10 +115,11 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 # send email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_ADMIN')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD_ADMIN')
+EMAIL_HOST_USER = 'mrrobot20332034@gmail.com'
+EMAIL_HOST_PASSWORD = 'ajdhzarnbkesvsro'
 EMAIL_PORT = 587
 
 # celery|redis settings

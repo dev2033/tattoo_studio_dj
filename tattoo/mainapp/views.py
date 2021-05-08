@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import PasswordResetView
 from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -6,7 +7,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from email_send.models import Client
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, CustomPasswordResetForm
 from .models import (
     Post, Master, TattooCategory,
     Tag, AboutStudio, WorkMaster
@@ -168,3 +169,8 @@ class RegistrationView(View):
             'form': form,
         }
         return render(request, 'mainapp/registration.html', context)
+
+
+class CustomPasswordResetView(PasswordResetView):
+    form_class = CustomPasswordResetForm
+    template_name = 'mainapp/password_reset.html'

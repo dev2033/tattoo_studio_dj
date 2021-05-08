@@ -1,9 +1,19 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import PasswordResetForm
 
 from email_send.models import Client
 
 User = get_user_model()
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        label='',
+        max_length=254,
+        widget=forms.EmailInput(attrs={'autocomplete': 'email',
+                                       'placeholder': 'Email'})
+    )
 
 
 class LoginForm(forms.ModelForm):
