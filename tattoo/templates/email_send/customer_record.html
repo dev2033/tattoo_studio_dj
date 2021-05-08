@@ -15,11 +15,16 @@
 {% block content %}
 <div class="row" style="margin-bottom: 50px; margin-top: 50px">
 <div class="col-md-6 offset-md-3">
-    <form action="" method="POST" class="contact-form row">
+    <form method="POST" class="contact-form row">
         {% csrf_token %}
         {{ form|crispy }}
         <hr>
-        <button type="submit" style="width" class="btn btn-outline-dark">Записаться</button>
+        {% if request.user.is_authenticated %}
+            <button type="submit" class="btn btn-outline-dark">Записаться</button>
+        {% else %}
+            <p class="text-center">Авторизуйтесь, чтобы записаться на сеанс!</p>
+        {% endif %}
+
     </form>
 </div>
 

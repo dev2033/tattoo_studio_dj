@@ -56,23 +56,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tattoo.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'tattoo_database_django',
-#         'USER': 'proger_py',
-#         'PASSWORD': '123456',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tattoo_database_django',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -118,8 +118,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mrrobot20332034@gmail.com'
-EMAIL_HOST_PASSWORD = 'ajdhzarnbkesvsro'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_ADMIN')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD_ADMIN')
 EMAIL_PORT = 587
 
 # celery|redis settings

@@ -31,3 +31,5 @@ class CustomerRecordView(CreateView):
         # send(form.instance.email)
         appointment_by_email.delay(form.instance.email)
         return super().form_valid(form)
+
+

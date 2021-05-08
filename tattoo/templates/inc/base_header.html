@@ -27,6 +27,7 @@
                     </li>
                     <li><a title="Contacts Page" href="{% url 'works' %}" >Работы мастеров</a></li>
 
+
                     {% if not request.user.is_authenticated %}
                         <li>
                             <a title="Contacts Page" href="{% url 'login' %}">Авторизация</a>
@@ -39,15 +40,12 @@
                         {% if request.user.is_authenticated %}
                             Здравствуйте
                             {{ request.user.username }}
-                        {% else %} Гость! {% endif %}
+                        {% endif %}
                     <li><a href="{% url 'logout' %}">| Выйти</a></li>
-
-
                     {% endif %}
+
                 </ul>
-
             </nav>
-
         <!-- ============ Верхнее меню - КОНЕЦ ============ -->
     </div>
 </div>

@@ -121,18 +121,18 @@ class RegistrationForm(forms.ModelForm):
         self.fields['last_name'].label = ''
         self.fields['email'].label = ''
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        # domain = email.split('.')[-1]
-        # if domain in ['com', 'net']:
-        #     raise forms.ValidationError(
-        #         f'Регистрация для домена {domain} невозможна'
-        #     )
-        if Client.objects.filter(email=email).exists():
-            raise forms.ValidationError(
-                f'Данный почтовый адрес уже зарегистрирован в системе'
-            )
-        return email
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+    #     # domain = email.split('.')[-1]
+    #     # if domain in ['com', 'net']:
+    #     #     raise forms.ValidationError(
+    #     #         f'Регистрация для домена {domain} невозможна'
+    #     #     )
+    #     if Client.objects.filter(email=email).exists():
+    #         raise forms.ValidationError(
+    #             f'Данный почтовый адрес уже зарегистрирован в системе'
+    #         )
+    #     return email
 
     def clean_username(self):
         username = self.cleaned_data['username']
