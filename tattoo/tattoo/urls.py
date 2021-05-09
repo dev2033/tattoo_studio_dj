@@ -1,3 +1,4 @@
+import debug_toolbar
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
@@ -11,6 +12,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('mainapp.urls')),
     path('contact/', include('email_send.urls'), name='contact'),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 
