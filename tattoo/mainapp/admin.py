@@ -72,6 +72,12 @@ class MasterAdminForm(ModelForm):
                 </span>
                 """)
 
+    about_master = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Master
+        fields = '__all__'
+
 
 class MasterAdmin(admin.ModelAdmin):
     save_on_top = True

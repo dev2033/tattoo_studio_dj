@@ -15,7 +15,7 @@
     <div class="content container">
         <div class="full row">
             <div class="col-md-6">
-                <p><strong>Привет меня зовут {{ master.name }}</strong><br>{{ master.about_master }}</p>
+                <p><strong>Привет меня зовут {{ master.name }}</strong><br>{{ master.about_master|safe }}</p>
                 <h4>Ищи меня тут</h4>
                 <ul class="social-links">
                     <li><a href="{{ master.vk_link }}"><i class="fa fa-vk"></i></a></li>

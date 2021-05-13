@@ -10,7 +10,7 @@ class Master(models.Model):
         max_length=70,
         help_text='например: тату-мастер'
     )
-    image = models.ImageField(verbose_name='Изображение')
+    image = models.ImageField(verbose_name='Изображение', upload_to='masters/')
     about_master = models.TextField('О мастере')
     vk_link = models.CharField(
         'Ссылка на Вконтакте',
@@ -60,7 +60,7 @@ class Post(models.Model):
     slug = models.SlugField('Url', max_length=255, unique=True)
     content = models.TextField('Контент', blank=True)
     views = models.IntegerField('Колличество просмотров', default=0)
-    image = models.ImageField("Изображение")
+    image = models.ImageField("Изображение", upload_to='posts/')
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата публикации'
@@ -131,7 +131,8 @@ class WorkMaster(models.Model):
         related_name='work_master',
         verbose_name='Мастер'
     )
-    image = models.ImageField(verbose_name='Изображение')
+    image = models.ImageField(verbose_name='Изображение',
+                              upload_to='work_master/')
 
     def __str__(self):
         return str(self.name)
