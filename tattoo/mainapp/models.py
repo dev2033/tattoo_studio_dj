@@ -60,7 +60,8 @@ class Post(models.Model):
     slug = models.SlugField('Url', max_length=255, unique=True)
     content = models.TextField('Контент', blank=True)
     views = models.IntegerField('Колличество просмотров', default=0)
-    image = models.ImageField("Изображение", upload_to='posts/')
+    image = models.ImageField("Изображение", upload_to='posts/', blank=True,
+                              null=True)
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата публикации'
@@ -122,7 +123,7 @@ class WorkMaster(models.Model):
         blank=True,
         null=True,
         help_text='Не обязательно, не где не задействуется! '
-                  'Пример: '
+                  'Пример: a-z, 0-9. любые рандомные значения'
     )
     slug = models.SlugField('Url', max_length=50, unique=True)
     master_name = models.ForeignKey(

@@ -100,6 +100,13 @@ class WorksMaster(ListView):
         work = Master.objects.get(id=master_id).work_master.all()
         return work
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        master_id = self.kwargs.get("pk")
+        master_name = Master.objects.get(id=master_id)
+        context['master_name'] = master_name
+        return context
+
 
 class WorksListView(ListView):
     """Все работы всех мастеров"""

@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+{% block header %}
+    <header id="master-header" class="full-screen overlayed">
+        {% include 'inc/base_header.html' %}
+        <h2 id="page-title"><span>404 NOT FOUND</span></h2>
+    </header>
+{% endblock %}
+
 {% block content %}
-404
+
 {% endblock %}
