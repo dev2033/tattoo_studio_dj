@@ -10,6 +10,7 @@ from .utils import e_handler404, e_handler500, e_handler403, e_handler400
 urlpatterns = [
     path('tattoo-studio-admin-panel/', admin.site.urls, name='admin'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+
     path('', include('mainapp.urls')),
     path('contact/', include('email_send.urls'), name='contact')
 ]
